@@ -37,7 +37,7 @@ private double intakeSpeed;
 
     if (Robot.oi.getRT() > 0.2){
       
-      intakeSpeed = 0.3;
+      intakeSpeed = 0.7;
 
     } else if (Robot.oi.getLT() > 0.2) {
       
