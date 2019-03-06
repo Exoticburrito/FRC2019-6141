@@ -60,12 +60,13 @@ public class DriveCommand extends Command {
     if (Robot.oi.isSlowDrive()) {
 
       linearSpeed *= 0.2;
+      
+    } 
+    // } else if (Robot.oi.isModerateDrive()) {
 
-    } else if (Robot.oi.isModerateDrive()) {
+    //   linearSpeed *= 0.5;
 
-      linearSpeed *= 0.5;
-
-    }
+    // }
 
     Robot.sysController.drive.setInputSpeed(linearSpeed, rotationalSpeed);
 

@@ -2,8 +2,10 @@ package frc.robot.sensors;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import com.analog.adis16448.frc.ADIS16448_IMU;
 
 public class GyroClass extends ADXRS450_Gyro {
+	public static final ADIS16448_IMU imu = new ADIS16448_IMU();
 
     double offset = 0.0;
     
@@ -14,7 +16,7 @@ public class GyroClass extends ADXRS450_Gyro {
 	}
 	
 	public void calibrate() {
-
+		imu.calibrate();
         super.calibrate();
         
 	}
@@ -92,10 +94,12 @@ public class GyroClass extends ADXRS450_Gyro {
 	 
 	 public void updateSD() {
 		 
-		 SmartDashboard.putNumber("Gyro Angle", getAngle());
-		 SmartDashboard.putData("Gyro", this);
+		//  SmartDashboard.putNumber("Gyro Angle", getAngle());
+		//  SmartDashboard.putData("Gyro", this);
         //  SmartDashboard.putNumber("Gyro Rate", getRate());
-         
+		SmartDashboard.putNumber("Gyro-X", imu.getAngleX());
+		SmartDashboard.putNumber("Gyro-Z", imu.getAngleZ());
+		
 	 }
 	 
 }

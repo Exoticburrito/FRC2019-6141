@@ -24,8 +24,8 @@ public class OI {
 
   private Joystick driver	= new Joystick(RobotMap.JOYSTICK_DRIVER);
   
-  private Toggle  driveSlow = new Toggle(driver, RobotMap.TOGGLE_7, false);
-  private Toggle  driveModerate	= new Toggle(driver, RobotMap.TOGGLE_8, false);
+  private Toggle  driveSlow = new Toggle(driver, RobotMap.TOGGLE_2, false);
+  // private Toggle  driveModerate	= new Toggle(driver, RobotMap.TOGGLE_8, false);
   private Toggle  driveStraight	= new Toggle(driver, RobotMap.TOGGLE_9, false);
 	private Toggle  driveReverse = new Toggle(driver, RobotMap.TOGGLE_10, true);
   private Toggle  slowTurn = new Toggle(driver, RobotMap.TOGGLE_11, false);
@@ -50,7 +50,7 @@ public class OI {
   public boolean getTrigger() { return driver.getRawButton(RobotMap.DRIVER_TRIGGER); }
   public boolean isStraightDrive() { return driveStraight.getToggle(); }
   public boolean isSlowDrive() { return driveSlow.getToggle(); }
-  public boolean isModerateDrive() { return driveModerate.getToggle(); }
+  // public boolean isModerateDrive() { return driveModerate.getToggle(); }
   public boolean isReverseDrive() { return driveReverse.getToggle(); }
   public boolean isSlowTurn() { return slowTurn.getToggle(); }
 
@@ -80,7 +80,7 @@ public class OI {
     SmartDashboard.putBoolean("LOGI TRIGGER", getTrigger());
     SmartDashboard.putBoolean("Straight Drive", isStraightDrive());
     SmartDashboard.putBoolean("Slow Drive", isSlowDrive());
-    SmartDashboard.putBoolean("Moderate Drive", isModerateDrive());
+    // SmartDashboard.putBoolean("Moderate Drive", isModerateDrive());
     SmartDashboard.putBoolean("Reverse Drive", isReverseDrive());
     SmartDashboard.putBoolean("Slow Turn", isSlowDrive());
 

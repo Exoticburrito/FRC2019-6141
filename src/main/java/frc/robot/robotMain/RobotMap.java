@@ -15,11 +15,10 @@ public class RobotMap {
 	public static final int LEFT_MOTOR_TWO_PWM_PORT = 1;
 	public static final int RIGHT_MOTOR_ONE_PWM_PORT = 2;
 	public static final int RIGHT_MOTOR_TWO_PWM_PORT = 3;
-	  
-	public static final int CARGO_INTAKE_MOTOR_PWM_PORT = 4;
+
+	public static final int MAIN_AXIS_MOTOR_PWM_PORT = 4;  
 	public static final int HATCH_AXIS_MOTOR_PWM_PORT = 5;
-	public static final int MAIN_AXIS_MOTOR_PWM_PORT = 6;
-	
+	public static final int CARGO_INTAKE_MOTOR_PWM_PORT = 6;
 	
 
   // BELOW, DECLARES CONSTANT INPUT "PORTS" USED ON PHYSICAL CONTROLLER
@@ -33,9 +32,10 @@ public class RobotMap {
 	public static final int JOYSTICK_DRIVER = 0; //DRIVER JOYSTICK PORT
 	  
 	public static final int DRIVER_TRIGGER = 1; //ACTIVATE LIMELIGHT
-  	public static final int TOGGLE_7 = 7; //STRAIGHT DRIVE 
-  	public static final int TOGGLE_8 = 8; //SLOW DRIVE 
-  	public static final int TOGGLE_9 = 9; //MODERATE DRIVE 
+	public static final int TOGGLE_2 = 2; //SLOW DRIVE 
+  	
+	// public static final int TOGGLE_8 = 8; //MODERATE DRIVE 
+	public static final int TOGGLE_9 = 9; //STRAIGHT DRIVE   
   	public static final int TOGGLE_10 = 10; //REVERSE DRIVE
   	public static final int TOGGLE_11 = 11; //SLOWTURN
 	public static final int TOGGLE_12 = 12; //CANCEL ALL
