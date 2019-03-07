@@ -38,6 +38,7 @@ public class DSetTimeCommand extends Command {
 
     @Override
     protected void end() {
+        Robot.sysController.drive.stopDT();
     } 
 
     @Override

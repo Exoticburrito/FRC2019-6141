@@ -38,12 +38,15 @@ public class DOnHeadingSetTimeCommmand extends Command {
 
 	@Override
 	protected boolean isFinished() {
-		return false;
+		return isTimedOut();
 	}
 
 	protected void end() {
 		Robot.sysController.drive.stopDT();
 	}
 
+	@Override
+    protected void interrupted() {
+    }
 
 }
