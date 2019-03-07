@@ -23,6 +23,7 @@ public class HatchCommand extends Command {
 
   public HatchCommand() {
 
+    super();
     requires(Robot.sysController.secondArm);
     requires(Robot.sysController.airSystem);
 

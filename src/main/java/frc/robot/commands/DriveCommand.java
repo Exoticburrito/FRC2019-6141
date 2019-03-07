@@ -21,6 +21,7 @@ public class DriveCommand extends Command {
 
   public DriveCommand() {
 
+    super();
     requires(Robot.sysController.drive);
 
   }

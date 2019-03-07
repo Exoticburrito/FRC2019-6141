@@ -12,6 +12,7 @@ public class LimeLightCommand extends Command {
   
   public LimeLightCommand() {
 
+    super();
     requires(Robot.sysController.drive);
 
   }

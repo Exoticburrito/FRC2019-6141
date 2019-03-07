@@ -23,6 +23,7 @@ public class CargoCommand extends Command {
 
   public CargoCommand() {
 
+    super();
     requires(Robot.sysController.mainArm);
 
   }

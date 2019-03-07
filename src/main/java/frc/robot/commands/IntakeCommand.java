@@ -21,6 +21,7 @@ private double intakeSpeed;
 
   public IntakeCommand() {
 
+    super();
     requires(Robot.sysController.intakeWheels);
 
   }

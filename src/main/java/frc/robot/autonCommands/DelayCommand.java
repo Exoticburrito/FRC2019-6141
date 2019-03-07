@@ -13,7 +13,10 @@ public class DelayCommand extends Command {
 	private double timeLimit;
 	
     public DelayCommand(double time) {
-    	this.timeLimit = time;
+
+        super();
+        this.timeLimit = time;
+        
     }
 
     protected void initialize() {
