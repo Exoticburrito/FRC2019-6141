@@ -55,6 +55,8 @@ public class AutonMain extends CommandGroup {
 
 	    	} else if (auto == AutoOptionsEnum.L2) { 
 
+				//ADD NOGYRO L2 (Start on HAB2?!)
+
 	    	} else if (auto == AutoOptionsEnum.R1) { 
 
 				addSequential(new DSetTimeCommand(0.4, 3));
@@ -62,8 +64,10 @@ public class AutonMain extends CommandGroup {
 
 	    	} else if (auto == AutoOptionsEnum.R2) {
 
+				//ADD NOGYRO R2 (Start on HAB2?!)
+
 	    	} else if (auto == AutoOptionsEnum.CR) {
-				
+
 				addSequential(new DSetTimeCommand(0.4, 3));
 
 	    	} else if (auto == AutoOptionsEnum.CL) {

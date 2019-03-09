@@ -24,10 +24,10 @@ public class AutoMainArmCommand extends Command {
 
   //TODO Tune seconds for elevator all the way up.
 
-  public AutoMainArmCommand(boolean upDown) {
+  public AutoMainArmCommand(boolean upDown, double seconds) {
 
     super();
-    this.time = 3;
+    this.time = seconds;
 
     //NOTE TIME IS NOT TUNED! CAREFUL.
 
