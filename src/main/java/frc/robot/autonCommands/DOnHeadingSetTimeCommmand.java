@@ -29,7 +29,7 @@ public class DOnHeadingSetTimeCommmand extends Command {
 	protected void execute() {
 			
 		double turn = Robot.sysController.g1.getAngleError(heading) 
-				* STRAIGHT_DRIVE_TURN_RATE;
+												* STRAIGHT_DRIVE_TURN_RATE;
 		if (turn > 1) turn = 1;
 		if (turn < -1) turn = -1;
 		Robot.sysController.drive.setInputSpeed(speed, turn);

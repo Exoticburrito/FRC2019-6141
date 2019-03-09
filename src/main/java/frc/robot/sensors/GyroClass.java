@@ -5,19 +5,20 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import com.analog.adis16448.frc.ADIS16448_IMU;
 
 public class GyroClass extends ADXRS450_Gyro {
+
 	public static final ADIS16448_IMU imu = new ADIS16448_IMU();
 
     double offset = 0.0;
     
 	public GyroClass() {
 
-        super();
+        imu.reset();
         
 	}
 	
 	public void calibrate() {
+		
 		imu.calibrate();
-        super.calibrate();
         
 	}
 	 
@@ -39,7 +40,7 @@ public class GyroClass extends ADXRS450_Gyro {
 
 		 if (angle >= 0 && angle < 360) {
 
-			super.reset();
+			imu.reset();
 			 offset = angle; //offset will always be 0.0 at start.
 			 
          }
@@ -51,7 +52,7 @@ public class GyroClass extends ADXRS450_Gyro {
 
 	 public double getAngle() {
 		 
-         double currentAngle = (super.getAngle() + offset) % 360.0;
+         double currentAngle = (imu.getAngleX() + offset) % 360.0;
          
 		 if (currentAngle < 0.0) {
 
