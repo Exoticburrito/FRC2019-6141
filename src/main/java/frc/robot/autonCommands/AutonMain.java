@@ -49,16 +49,26 @@ public class AutonMain extends CommandGroup {
 	    	if (auto == AutoOptionsEnum.TEST) {
 
     		} else if (auto == AutoOptionsEnum.L1 ) { 
-                
+
+				addSequential(new DSetTimeCommand(0.4, 3));
+				addSequential(new RSetTimeCommand(2, -1));
+
 	    	} else if (auto == AutoOptionsEnum.L2) { 
 
 	    	} else if (auto == AutoOptionsEnum.R1) { 
-                
+
+				addSequential(new DSetTimeCommand(0.4, 3));
+				addSequential(new RSetTimeCommand(2, 1));
+
 	    	} else if (auto == AutoOptionsEnum.R2) {
 
 	    	} else if (auto == AutoOptionsEnum.CR) {
+				
+				addSequential(new DSetTimeCommand(0.4, 3));
 
 	    	} else if (auto == AutoOptionsEnum.CL) {
+
+				addSequential(new DSetTimeCommand(0.4, 3));
 
             }  
         } 
