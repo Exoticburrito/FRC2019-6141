@@ -22,6 +22,8 @@ private final double outputSpeed = -0.7;
 private final double time = 3;
 private boolean inOut;
 
+//TODO FIGURE OUT DIRECTIONS AND TRUE/FALSE HERE
+
   public AutoIntakeCommand(boolean direction) {
 
     super();
