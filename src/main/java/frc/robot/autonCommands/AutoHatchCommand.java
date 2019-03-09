@@ -22,7 +22,7 @@ public class AutoHatchCommand extends Command {
   private double hatchArmSpeed, time;
   private boolean inOut;
 
-  public AutoHatchCommand(double seconds, double speed) {
+  public AutoHatchCommand(double speed, double seconds) {
 
     super();
     requires(Robot.sysController.secondArm);

@@ -69,10 +69,14 @@ public class AutonMain extends CommandGroup {
 	    	} else if (auto == AutoOptionsEnum.CR) {
 
 				addSequential(new DSetTimeCommand(0.4, 3));
+				addSequential(new AutoHatchCommand(0.4, 2 ));
+				addSequential(new AutoHatchCommand(true, 2));
 
 	    	} else if (auto == AutoOptionsEnum.CL) {
 
 				addSequential(new DSetTimeCommand(0.4, 3));
+				addSequential(new AutoHatchCommand(0.4, 2 ));
+				addSequential(new AutoHatchCommand(true, 2));
 
             }  
         } 
