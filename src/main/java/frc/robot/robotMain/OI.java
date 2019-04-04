@@ -23,12 +23,12 @@ public class OI {
   //See "Toggle" class in robotMain package.
 
   private Joystick driver	= new Joystick(RobotMap.JOYSTICK_DRIVER);
-  
+
+  private Toggle  driveReverse = new Toggle(driver, RobotMap.DRIVER_TRIGGER, false);
   private Toggle  driveSlow = new Toggle(driver, RobotMap.TOGGLE_2, false);
-  // private Toggle  driveModerate	= new Toggle(driver, RobotMap.TOGGLE_8, false);
-  private Toggle  driveStraight	= new Toggle(driver, RobotMap.TOGGLE_9, false);
-	private Toggle  driveReverse = new Toggle(driver, RobotMap.TOGGLE_10, true);
-  private Toggle  slowTurn = new Toggle(driver, RobotMap.TOGGLE_11, false);
+  private Toggle shiftGears = new Toggle(driver, RobotMap.TOGGLE_6, false);
+  private Toggle  driveStraight	= new Toggle(driver, RobotMap.TOGGLE_7, false);
+  private Toggle climbPiston = new Toggle(driver, RobotMap.TOGGLE_5, false);
 
   private Button  drCancelButton = new JoystickButton(driver, RobotMap.TOGGLE_12); 
 
@@ -48,11 +48,12 @@ public class OI {
 //DRIVER TOGGLE METHODS
 
   public boolean getTrigger() { return driver.getRawButton(RobotMap.DRIVER_TRIGGER); }
-  public boolean isStraightDrive() { return driveStraight.getToggle(); }
+
   public boolean isSlowDrive() { return driveSlow.getToggle(); }
-  // public boolean isModerateDrive() { return driveModerate.getToggle(); }
   public boolean isReverseDrive() { return driveReverse.getToggle(); }
-  public boolean isSlowTurn() { return slowTurn.getToggle(); }
+  public boolean isStraightDrive() { return driveStraight.getToggle(); }
+  public boolean isShiftGears() { return shiftGears.getToggle(); }
+  public boolean isClimbMode() { return climbPiston.getToggle(); }
 
 //OPERATOR METHODS, NOTE: Not toggles, therefore no need to create an objects for operator...
 
@@ -64,37 +65,38 @@ public class OI {
 
   public boolean getLBumper() { return operator.getRawButton(RobotMap.BUTTON_LB); } //PNEUMATICS OUT
   public boolean getRBumper() { return operator.getRawButton(RobotMap.BUTTON_RB); } //PNEUMATICS IN
+  
   public boolean getAButton() { return operator.getRawButton(RobotMap.BUTTON_A); } //SLOW CARGO ARM
-  public boolean getXButton() { return operator.getRawButton(RobotMap.BUTTON_X); } //SLOW HATCH ARM
+  public boolean getXButton() { return operator.getRawButton(RobotMap.BUTTON_X); } //HOLD HATCH ARM
   
-  
-
 //SHOW INFO ON SD, FOR TESTING ONLY
 
   public void updateSD() {
 
     //DISPLAY DRIVER DATA
-    SmartDashboard.putNumber("LOGI YAXIS", getYAxis());
-    SmartDashboard.putNumber("LOGI XAXIS", getZAxis());
+    // SmartDashboard.putNumber("LOGI YAXIS", getYAxis());
+    // SmartDashboard.putNumber("LOGI XAXIS", getZAxis());
 
-    SmartDashboard.putBoolean("LOGI TRIGGER", getTrigger());
+    // SmartDashboard.putBoolean("LOGI TRIGGER", getTrigger());
+
     SmartDashboard.putBoolean("Straight Drive", isStraightDrive());
-    SmartDashboard.putBoolean("Slow Drive", isSlowDrive());
-    // SmartDashboard.putBoolean("Moderate Drive", isModerateDrive());
     SmartDashboard.putBoolean("Reverse Drive", isReverseDrive());
-    SmartDashboard.putBoolean("Slow Turn", isSlowDrive());
+    SmartDashboard.putBoolean("Slow Drive", isSlowDrive());
 
-    //DISPLAY OPERATOR DATA
-    SmartDashboard.putNumber("RSY INPUT", getRY());
-    SmartDashboard.putNumber("LSY INPUT", getLY());
+    // SmartDashboard.putBoolean("Moderate Drive", isModerateDrive());
+    // SmartDashboard.putBoolean("Slow Turn", isSlowDrive());
 
-    SmartDashboard.putNumber("RT INPUT", getRT());
-    SmartDashboard.putNumber("LT INPUT", getLT());
+    // DISPLAY OPERATOR DATA
+    // SmartDashboard.putNumber("RSY INPUT", getRY());
+    // SmartDashboard.putNumber("LSY INPUT", getLY());
 
-    SmartDashboard.putBoolean("A BUTTON", getAButton());
-    SmartDashboard.putBoolean("X BUTTON", getXButton());
-    SmartDashboard.putBoolean("L BUMPER", getLBumper());
-    SmartDashboard.putBoolean("R BUMPER", getRBumper());
+    // SmartDashboard.putNumber("RT INPUT", getRT());
+    // SmartDashboard.putNumber("LT INPUT", getLT());
+
+    // SmartDashboard.putBoolean("A BUTTON", getAButton());
+    // SmartDashboard.putBoolean("X BUTTON", getXButton());
+    // SmartDashboard.putBoolean("L BUMPER", getLBumper());
+    // SmartDashboard.putBoolean("R BUMPER", getRBumper());
 
   }
   

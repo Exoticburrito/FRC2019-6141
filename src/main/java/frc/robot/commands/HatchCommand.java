@@ -18,7 +18,6 @@ import frc.robot.robotMain.Robot;
 public class HatchCommand extends Command {
 
   final private double maxArmSpeed = 0.4;
-  final private double minArmSpeed = -0.4;
   private double hatchArmSpeed;
 
   public HatchCommand() {
@@ -32,7 +31,7 @@ public class HatchCommand extends Command {
   @Override
   protected void initialize() {
 
-    Robot.sysController.airSystem.pistonIn();
+    Robot.sysController.airSystem.hatchPiston(false);
 
     hatchArmSpeed = 0;
 
@@ -43,19 +42,13 @@ public class HatchCommand extends Command {
 
     hatchArmSpeed = Robot.oi.getLY();
 
-    if (hatchArmSpeed > maxArmSpeed) {
+    if (Math.abs(hatchArmSpeed) > maxArmSpeed && hatchArmSpeed > 0) {
 
       hatchArmSpeed = maxArmSpeed;
 
-    } else if (hatchArmSpeed < minArmSpeed) {
+    } else if (Math.abs(hatchArmSpeed) > maxArmSpeed && hatchArmSpeed < 0) {
 
-      hatchArmSpeed = minArmSpeed;
-
-    }
-
-    if (Robot.oi.getXButton()) {
-
-      hatchArmSpeed *= 0.5;
+      hatchArmSpeed = -maxArmSpeed;
 
     }
 
@@ -63,11 +56,11 @@ public class HatchCommand extends Command {
 
     if (Robot.oi.getLBumper()) {
 
-      Robot.sysController.airSystem.pistonOut();
+      Robot.sysController.airSystem.hatchPiston(true);
 
     } else if (Robot.oi.getRBumper()){
 
-      Robot.sysController.airSystem.pistonIn();
+      Robot.sysController.airSystem.hatchPiston(false);
 
     }
 

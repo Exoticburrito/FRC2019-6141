@@ -15,16 +15,14 @@ import frc.robot.robotMain.Robot;
  * 
  */
 
-public class AutoIntakeCommand extends Command {
+public class AutoInCommand extends Command {
 
-private final double intakeSpeed = 1.0;
-private final double outputSpeed = -0.7;
+private final double intakeSpeed = 0.9;
+private final double outputSpeed = -0.8;
 private final double time = 3;
 private boolean inOut;
 
-//TODO FIGURE OUT DIRECTIONS AND TRUE/FALSE HERE
-
-  public AutoIntakeCommand(boolean direction) {
+  public AutoInCommand(boolean direction) {
 
     super();
     requires(Robot.sysController.intakeWheels);

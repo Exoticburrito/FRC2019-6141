@@ -6,7 +6,7 @@ import frc.robot.robotMain.Robot;
 /**
  *  Code for commands on the hatch side of robot.
  *  When run, the execute() method 
- *  will get left JS y-axis and check for Y-button to operate 
+ *  will run based on parameters given in constructor.
  *  the pneumatics and the arm motor. 
  * 
  *  Calls the setSpeed method and the pistonIn/Out methods
@@ -15,26 +15,24 @@ import frc.robot.robotMain.Robot;
  * 
  */
 
-public class AutoHatchCommand extends Command {
+public class AutoHCommand extends Command {
 
   final private double maxArmSpeed = 0.4;
-  final private double minArmSpeed = -0.4;
   private double hatchArmSpeed, time;
   private boolean inOut;
 
-  public AutoHatchCommand(double speed, double seconds) {
+  public AutoHCommand(double direction, double seconds) {
 
     super();
     requires(Robot.sysController.secondArm);
     requires(Robot.sysController.airSystem);
 
-    this.hatchArmSpeed = speed;
+    this.hatchArmSpeed = direction * maxArmSpeed;
     this.time = seconds;
 
   }
-
   
-  public AutoHatchCommand(Boolean pistonInOutBoolean, double pistonTime) {
+  public AutoHCommand(Boolean pistonInOutBoolean, double pistonTime) {
 
     super();
     requires(Robot.sysController.secondArm);
@@ -46,7 +44,7 @@ public class AutoHatchCommand extends Command {
   @Override
   protected void initialize() {
 
-    Robot.sysController.airSystem.pistonIn();
+    Robot.sysController.airSystem.hatchPiston(false);
     setTimeout(time);
     hatchArmSpeed = 0;
 
@@ -55,24 +53,15 @@ public class AutoHatchCommand extends Command {
   @Override
   protected void execute() {
 
-    if (hatchArmSpeed > maxArmSpeed) {
-
-        hatchArmSpeed = maxArmSpeed;
-
-    } else if (hatchArmSpeed < minArmSpeed) {
-
-        hatchArmSpeed = minArmSpeed;
-    }
-
     Robot.sysController.secondArm.setSpeed(hatchArmSpeed);
 
     if (inOut) {
 
-        Robot.sysController.airSystem.pistonOut();
+        Robot.sysController.airSystem.hatchPiston(true);
 
     } else {
 
-      Robot.sysController.airSystem.pistonIn();
+      Robot.sysController.airSystem.hatchPiston(false);
 
     }
 

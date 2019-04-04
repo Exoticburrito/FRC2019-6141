@@ -13,12 +13,15 @@ public class RobotMap {
 
 	public static final int LEFT_MOTOR_ONE_PWM_PORT = 0;
 	public static final int LEFT_MOTOR_TWO_PWM_PORT = 1;
+	public static final int LEFT_MOTOR_THREE_PWM_PORT = 7;
+
 	public static final int RIGHT_MOTOR_ONE_PWM_PORT = 2;
 	public static final int RIGHT_MOTOR_TWO_PWM_PORT = 3;
+	public static final int RIGHT_MOTOR_THREE_PWM_PORT = 8;
 
 	public static final int MAIN_AXIS_MOTOR_PWM_PORT = 4;  
-	public static final int HATCH_AXIS_MOTOR_PWM_PORT = 5;
-	public static final int CARGO_INTAKE_MOTOR_PWM_PORT = 6;
+	public static final int CARGO_INTAKE_MOTOR_PWM_PORT = 5;
+	public static final int HATCH_AXIS_MOTOR_PWM_PORT = 6;
 	
 
   // BELOW, DECLARES CONSTANT INPUT "PORTS" USED ON PHYSICAL CONTROLLER
@@ -31,13 +34,13 @@ public class RobotMap {
 
 	public static final int JOYSTICK_DRIVER = 0; //DRIVER JOYSTICK PORT
 	  
-	public static final int DRIVER_TRIGGER = 1; //ACTIVATE LIMELIGHT
-	public static final int TOGGLE_2 = 2; //SLOW DRIVE 
-  	
-	// public static final int TOGGLE_8 = 8; //MODERATE DRIVE 
-	public static final int TOGGLE_9 = 9; //STRAIGHT DRIVE   
-  	public static final int TOGGLE_10 = 10; //REVERSE DRIVE
-  	public static final int TOGGLE_11 = 11; //SLOWTURN
+	public static final int DRIVER_TRIGGER = 1; //REVERSE DRIVE
+	public static final int TOGGLE_2 = 2; //PRECISION DRIVE 
+	
+	public static final int TOGGLE_5 = 5; //FIRE CLIMB PISTONS
+	public static final int TOGGLE_6 = 6; //SHIFT GEARS
+	public static final int TOGGLE_7 = 7; //STRAIGHT DRIVE   
+
 	public static final int TOGGLE_12 = 12; //CANCEL ALL
 	  
 //OPERATOR CONTROLS (JOYSTICK, TOGGLES, BUTTONS) --> X-BOX CONTROLLER
@@ -53,13 +56,13 @@ public class RobotMap {
 	public static final int RS_X_AXIS = 4; //UNUSED
 	public static final int RS_Y_AXIS = 5; //CARGO ARM MOVEMENT
 
-	public static final int BUTTON_A = 0; //SLOW CARGOARM
-	public static final int BUTTON_B = 1; //UNUSED
-	public static final int BUTTON_X = 2; //SLOW HATCHARM
-	public static final int BUTTON_Y = 3; //CANCEL ALL
+	public static final int BUTTON_A = 1; //SLOW CARGOARM
+	public static final int BUTTON_B = 2; //UNUSED
+	public static final int BUTTON_X = 3; //KEEP ARM IN
+	public static final int BUTTON_Y = 4; //CANCEL ALL
 
-	public static final int BUTTON_LB = 4; //PNEUMATICS OUT
-	public static final int BUTTON_RB = 5; //PNEUMATICS IN
+	public static final int BUTTON_LB = 5; //HATCH OUT
+	public static final int BUTTON_RB = 6; //HATCH IN
 
 
 }

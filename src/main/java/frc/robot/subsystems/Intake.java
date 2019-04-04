@@ -3,12 +3,15 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.RampInputSpeed;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.robotMain.RobotMap;
 
 public class Intake extends Subsystem {
 
     private Spark intakeBallMotor;
+    private RampInputSpeed intakeRamp = new RampInputSpeed();
+    private double intakeMotorSpeed;
 
     public void initDefaultCommand() {
       
@@ -19,12 +22,16 @@ public class Intake extends Subsystem {
     public Intake () {
 
         intakeBallMotor = new Spark(RobotMap.CARGO_INTAKE_MOTOR_PWM_PORT);
+        intakeRamp.setMaxCPS(3);
+        intakeMotorSpeed = 0;
 
     }
 
     public void setCargoIntakeSpeed(double speed) {
 
-        intakeBallMotor.set(speed);
+        intakeMotorSpeed = intakeRamp.rampSpeed(speed);
+
+        intakeBallMotor.set(intakeMotorSpeed);
 
     }
 

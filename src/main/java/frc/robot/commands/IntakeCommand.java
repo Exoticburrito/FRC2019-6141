@@ -18,6 +18,8 @@ import frc.robot.robotMain.Robot;
 public class IntakeCommand extends Command {
 
 private double intakeSpeed;
+private double maxOutput;
+private double maxInput;
 
   public IntakeCommand() {
 
@@ -29,6 +31,8 @@ private double intakeSpeed;
   @Override
   protected void initialize() {
 
+    maxOutput = 0.8;
+    maxInput = 0.9;
     intakeSpeed = 0;
     
   }
@@ -36,13 +40,31 @@ private double intakeSpeed;
   @Override
   protected void execute() {
 
-    if (Robot.oi.getRT() > 0.2){
+    if (Robot.oi.getRT() > 0.08) {
       
-      intakeSpeed = 0.7;
+      if (Robot.oi.getRT() > maxInput) { 
 
-    } else if (Robot.oi.getLT() > 0.2) {
-      
-      intakeSpeed = -0.7;
+        intakeSpeed = maxInput;
+        
+      } else { 
+
+        intakeSpeed = Robot.oi.getRT();
+
+      }
+
+    } else if (Robot.oi.getLT() > 0.08) {
+
+        if (Robot.oi.getLT() > maxOutput) {
+          
+          intakeSpeed = maxOutput;
+
+        } else {
+          
+          intakeSpeed = Robot.oi.getLT();
+
+        }
+
+        intakeSpeed *= -1;
 
     } else {
 

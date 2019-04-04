@@ -15,16 +15,14 @@ import frc.robot.robotMain.Robot;
  * 
  */
 
-public class AutoMainArmCommand extends Command {
+public class AutoArmCommand extends Command {
 
   final private double maxArmSpeed = 0.3;
   final private double minArmSpeed = -0.3;
   private double time;
   private boolean direction; //false is down, true is up.
 
-  //TODO Tune seconds for elevator all the way up.
-
-  public AutoMainArmCommand(boolean upDown, double seconds) {
+  public AutoArmCommand(boolean upDown, double seconds) {
 
     super();
     this.time = seconds;

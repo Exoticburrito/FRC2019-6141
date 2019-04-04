@@ -23,6 +23,10 @@ public class SystemController extends Subsystem {
 	public GyroClass g1;
 	public Intake intakeWheels;
 
+	// ^^^declare objects
+
+	//Use constructor to create objects of all subsystems.
+
 	public SystemController() {
 
 		drive = new DriveTrain();
@@ -34,11 +38,13 @@ public class SystemController extends Subsystem {
 
 	}
 	
+	//update SD for all subsystems.
 	public void updateAllSD() {
 
 		drive.updateSD();
 		mainArm.updateSD();
 		secondArm.updateSD();
+		airSystem.updateSD();
 		intakeWheels.updateSD();
 		g1.updateSD();
 		

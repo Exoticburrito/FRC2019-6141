@@ -18,7 +18,7 @@ public class DSetTimeCommand extends Command {
     public DSetTimeCommand(double speed, double time) {
     	
     	super();
-    	this.speed= speed;
+    	this.speed = -speed;//reverse so it runs the right way
     	this.timeLimit = time;
     	
     }

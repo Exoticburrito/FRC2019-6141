@@ -1,7 +1,8 @@
 package frc.robot.robotMain;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -12,7 +13,7 @@ import frc.robot.subsystems.SystemController;
 public class Robot extends TimedRobot {
   
   public static OI oi; //create instance of OI class.
-  Command autonomousCommand; //create a blank commmand. 
+  AutonMain autonomousCommand; //create a blank commmand. 
 
   public static SystemController sysController = new SystemController();
 
@@ -24,6 +25,10 @@ public class Robot extends TimedRobot {
   public void robotInit() {
 
     oi = new OI();
+
+    UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+		camera.setResolution(320, 240);
+    camera.setFPS(30);
     
     chooser.setDefaultOption("DS", AutoOptionsEnum.driveStraight);
     chooser.addOption("L1", AutoOptionsEnum.L1);
@@ -45,6 +50,10 @@ public class Robot extends TimedRobot {
 
     sysController.g1.calibrate();
     sysController.g1.reset();
+
+    autonomousCommand = new AutonMain(chooser.getSelected(), 
+    withDelay.getSelected(), 
+    withGyro.getSelected());
 
   }
 
@@ -80,10 +89,6 @@ public class Robot extends TimedRobot {
   public void autonomousInit() {
 
     //init command above, set command here.
-
-    autonomousCommand = new AutonMain(chooser.getSelected(), 
-                                            withDelay.getSelected(), 
-                                            withGyro.getSelected());
 
     if (autonomousCommand != null) {
 

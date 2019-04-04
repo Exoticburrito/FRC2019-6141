@@ -14,7 +14,8 @@ public class RSetTimeCommand extends Command {
 	private double timeLimit;
 	private double direction;
 	
-	//	direction is either 1, or -1. ---> left or right.  
+    //	direction is either 1, or -1. ---> left or right.  
+    
     public RSetTimeCommand(double time, double dir) {
 
     	requires(Robot.sysController.drive);

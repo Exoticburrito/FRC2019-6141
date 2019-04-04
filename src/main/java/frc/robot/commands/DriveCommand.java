@@ -19,10 +19,15 @@ public class DriveCommand extends Command {
   private double linearSpeed;
   private double rotationalSpeed;
 
+  private double maxSpeed = 0.7;
+  private double maxTurn = 0.6;
+  private final double STRAIGHT_DRIVE_TURN_RATE= 0.1;
+
   public DriveCommand() {
 
     super();
     requires(Robot.sysController.drive);
+    requires(Robot.sysController.airSystem);
 
   }
 
@@ -40,37 +45,47 @@ public class DriveCommand extends Command {
     linearSpeed = Robot.oi.getYAxis();
     rotationalSpeed = Robot.oi.getZAxis();
 
-    if (Robot.oi.isStraightDrive()) {
+    if (Math.abs(linearSpeed) >  0.08 || Math.abs(rotationalSpeed) > 0.08) {
 
-      rotationalSpeed = 0;
+      if (Robot.oi.isStraightDrive()) {
 
-    } 
-    
-    if (Robot.oi.isSlowTurn()) {
+        rotationalSpeed *= STRAIGHT_DRIVE_TURN_RATE;
+  
+      } 
+      
+      if (Robot.oi.isReverseDrive()) {
+        
+        linearSpeed *= -1;
+  
+      }
+  
+      if (Robot.oi.isSlowDrive()) {
+  
+        linearSpeed *= 0.4;
+        rotationalSpeed *= 0.4;
+        
+      } 
+  
+      if (linearSpeed > maxSpeed) {
+  
+        linearSpeed = maxSpeed;
+  
+      }
+      
+      if (rotationalSpeed > maxTurn) {
+  
+        rotationalSpeed = maxTurn;
 
-      rotationalSpeed *= 0.3;
+      }
 
     }
-    
-    if (Robot.oi.isReverseDrive()) {
-      
-      linearSpeed *= -1;
-
-    }
-
-    if (Robot.oi.isSlowDrive()) {
-
-      linearSpeed *= 0.2;
-      
-    } 
-    // } else if (Robot.oi.isModerateDrive()) {
-
-    //   linearSpeed *= 0.5;
-
-    // }
-
+   
+    Robot.sysController.airSystem.drivePiston(Robot.oi.isShiftGears());
     Robot.sysController.drive.setInputSpeed(linearSpeed, rotationalSpeed);
 
+    if (Robot.oi.isClimbMode()) {
+      Robot.sysController.airSystem.climbPiston(Robot.oi.isClimbMode());
+    }
   }
 
   @Override

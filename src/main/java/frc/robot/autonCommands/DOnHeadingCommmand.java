@@ -3,7 +3,7 @@ package frc.robot.autonCommands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.robotMain.Robot;
 
-public class DOnHeadingSetTimeCommmand extends Command {
+public class DOnHeadingCommmand extends Command {
 	
 	private double heading;
 	private double speed;
@@ -11,7 +11,7 @@ public class DOnHeadingSetTimeCommmand extends Command {
 
 	private final double STRAIGHT_DRIVE_TURN_RATE = 0.005;
 	
-	public DOnHeadingSetTimeCommmand(double heading, double speed, double time) {
+	public DOnHeadingCommmand(double heading, double speed, double time) {
 		
 		super();
 		requires(Robot.sysController.drive);

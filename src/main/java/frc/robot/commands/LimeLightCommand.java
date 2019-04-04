@@ -52,7 +52,7 @@ public class LimeLightCommand extends Command {
 
   @Override
   protected void interrupted() {
-    end();
+    // end();
   }
 
   public void Update_Limelight_Tracking() {
@@ -62,22 +62,26 @@ public class LimeLightCommand extends Command {
     final double STEER_K = 0.03; // how hard to turn toward the target, same idea as gyroTurnConst...
     final double DRIVE_K = 0.26; // how hard to drive forward toward the target
     final double DESIRED_TARGET_AREA = 13.0; // Area of the target when the robot reaches the wall
-    final double MAX_DRIVE = 0.7; // speed limit so we don't drive too fast
+    final double MAX_DRIVE = 0.5; // speed limit so we don't drive too fast
 
     double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
+    //target match, based on pipeline, <1.0 no target acquired.
+
     double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
+    //x (horizontal) offset
 
     // double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
     // note: ty is unessecery and unused in this case, vision targets are always in same spots.
 
     double ta = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0);
+    //calculated target area, bsaed on target param.
 
-    if (tv < 1.0) {
+    if (tv < 1.0) { //if no target, don't do anything.
 
       LimelightHasValidTarget = false;
       LimelightDriveVal = 0.0;
       LimelightSteerVal = 0.0;
-      return;
+      return; //skip rest of method.
 
     }
 

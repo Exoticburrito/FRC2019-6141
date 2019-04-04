@@ -40,23 +40,37 @@ public class CargoCommand extends Command {
 
     armSpeed = Robot.oi.getRY();
 
-    if (armSpeed > maxArmSpeed) {
+    
+    if (Robot.oi.getXButton()) {
 
-      armSpeed = maxArmSpeed;
+      armSpeed = 0.2;
 
-    } else if (armSpeed < minArmSpeed) {
+    } else if (Math.abs(armSpeed) > 0.08) {
 
-      armSpeed = minArmSpeed;
+      if (armSpeed > maxArmSpeed) {
+
+        armSpeed = maxArmSpeed;
+  
+      } else if (armSpeed < minArmSpeed) {
+  
+        armSpeed = minArmSpeed;
+  
+      }
+  
+      if (Robot.oi.getAButton()) {
+  
+        armSpeed *= 0.5;
+  
+      } 
+  
+    } else {
+
+      armSpeed = 0;
 
     }
+    
 
-    if (Robot.oi.getAButton()) {
-
-      armSpeed *= 0.5;
-
-    }
-
-    Robot.sysController.mainArm.setMainArmRotateSpeed(armSpeed);
+    Robot.sysController.mainArm.setMainArmRotateSpeed(-armSpeed);
 
   }
 
