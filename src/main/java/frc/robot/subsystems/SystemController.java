@@ -18,7 +18,7 @@ public class SystemController extends Subsystem {
 	
 	public DriveTrain drive;
 	public CargoArm arm;
-	public HatchArm fingers;
+	public HatchFingers fingers;
 	public Pneumatics airSystem;
 	public GyroClass g1;
 	public Intake intakeWheels;
@@ -29,7 +29,7 @@ public class SystemController extends Subsystem {
 
 		drive = new DriveTrain();
 		arm = new CargoArm();
-		fingers = new HatchArm();
+		fingers = new HatchFingers();
 		airSystem = new Pneumatics();
 		g1 = new GyroClass();
 		intakeWheels = new Intake();

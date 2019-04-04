@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.HatchCommand;
 import frc.robot.robotMain.RobotMap;
 
-public class HatchArm extends Subsystem {
+public class HatchFingers extends Subsystem {
 
     private Spark hatchArmMotor;
 
@@ -16,7 +16,7 @@ public class HatchArm extends Subsystem {
   
     }
 
-    public HatchArm () {
+    public HatchFingers () {
 
         hatchArmMotor = new Spark(RobotMap.HATCH_AXIS_MOTOR_PWM_PORT);
 
