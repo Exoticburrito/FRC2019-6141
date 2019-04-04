@@ -57,8 +57,9 @@ public class LimeLightCommand extends Command {
 
   public void Update_Limelight_Tracking() {
 
-    //TODO TUNE VISION CONSTANTS
 
+    //NOTE, THESE K-CONSTANTS MUST BE TUNED.
+    
     final double STEER_K = 0.03; // how hard to turn toward the target, same idea as gyroTurnConst...
     final double DRIVE_K = 0.26; // how hard to drive forward toward the target
     final double DESIRED_TARGET_AREA = 13.0; // Area of the target when the robot reaches the wall
