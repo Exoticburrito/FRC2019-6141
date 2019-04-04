@@ -17,13 +17,15 @@ import frc.robot.robotMain.Robot;
 
 public class HatchCommand extends Command {
 
-  final private double maxArmSpeed = 0.4;
-  private double hatchArmSpeed;
+  final private double maxFingerSpeed = 0.4;
+  final private double minFingerSpeed = -0.4;
+
+  private double fingerSpeed;
 
   public HatchCommand() {
 
     super();
-    requires(Robot.sysController.secondArm);
+    requires(Robot.sysController.fingers);
     requires(Robot.sysController.airSystem);
 
   }
@@ -33,26 +35,30 @@ public class HatchCommand extends Command {
 
     Robot.sysController.airSystem.hatchPiston(false);
 
-    hatchArmSpeed = 0;
+    fingerSpeed = 0;
 
   }
 
   @Override
   protected void execute() {
 
-    hatchArmSpeed = Robot.oi.getLY();
+    fingerSpeed = Robot.oi.getLY();
 
-    if (Math.abs(hatchArmSpeed) > maxArmSpeed && hatchArmSpeed > 0) {
+    if (Math.abs(fingerSpeed) > 0.08) {
 
-      hatchArmSpeed = maxArmSpeed;
+      if (fingerSpeed > maxFingerSpeed) {
 
-    } else if (Math.abs(hatchArmSpeed) > maxArmSpeed && hatchArmSpeed < 0) {
-
-      hatchArmSpeed = -maxArmSpeed;
+        fingerSpeed = maxFingerSpeed;
+  
+      } else if (fingerSpeed < minFingerSpeed) {
+  
+        fingerSpeed = minFingerSpeed;
+  
+      } 
 
     }
 
-    Robot.sysController.secondArm.setSpeed(hatchArmSpeed);
+    Robot.sysController.fingers.setFingersSpeed(fingerSpeed);
 
     if (Robot.oi.getLBumper()) {
 
@@ -77,7 +83,7 @@ public class HatchCommand extends Command {
   @Override
   protected void end() {
 
-    Robot.sysController.secondArm.stopHArm();
+    Robot.sysController.fingers.stopHArm();
     
   }
 

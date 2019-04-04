@@ -24,7 +24,7 @@ public class LimeLightCommand extends Command {
   @Override
   protected void execute() {
 
-    if (Robot.oi.getTrigger()) {
+    if (Robot.oi.getButton5()) {
 
       Update_Limelight_Tracking();
 

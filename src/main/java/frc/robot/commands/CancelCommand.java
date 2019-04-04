@@ -2,6 +2,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import frc.robot.robotMain.Robot;
 
 /**
  *  Code for commands that delete all commands.
@@ -28,6 +29,7 @@ public class CancelCommand extends Command {
   protected void execute() {  
 
     Scheduler.getInstance().removeAll();
+    Robot.oi.resetToggles();
 
   }
 
@@ -36,5 +38,5 @@ public class CancelCommand extends Command {
     return true;
 
   }
-  
+
 }

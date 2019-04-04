@@ -3,7 +3,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.CargoCommand;
+import frc.robot.commands.ArmCommand;
 import frc.robot.robotMain.RobotMap;
 
 public class CargoArm extends Subsystem {
@@ -12,7 +12,7 @@ public class CargoArm extends Subsystem {
 
     public void initDefaultCommand() {
       
-        setDefaultCommand(new CargoCommand());
+        setDefaultCommand(new ArmCommand());
 
     }
     
@@ -22,7 +22,7 @@ public class CargoArm extends Subsystem {
 
     }
 
-    public void setMainArmRotateSpeed(double speed) {
+    public void setArmRotateSpeed(double speed) {
 
         mainAxisMotor.set(speed);
 

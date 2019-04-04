@@ -37,7 +37,7 @@ public class RobotMap {
 	public static final int DRIVER_TRIGGER = 1; //REVERSE DRIVE
 	public static final int TOGGLE_2 = 2; //PRECISION DRIVE 
 	
-	public static final int TOGGLE_5 = 5; //FIRE CLIMB PISTONS
+	public static final int TOGGLE_5 = 5; //ACTIVATE LIMELIGHT (HOLD DOWN)
 	public static final int TOGGLE_6 = 6; //SHIFT GEARS
 	public static final int TOGGLE_7 = 7; //STRAIGHT DRIVE   
 

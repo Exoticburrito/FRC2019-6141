@@ -59,7 +59,7 @@ public class DriveCommand extends Command {
   
       }
   
-      if (Robot.oi.isSlowDrive()) {
+      if (Robot.oi.isPreciseDrive()) {
   
         linearSpeed *= 0.4;
         rotationalSpeed *= 0.4;
@@ -82,10 +82,7 @@ public class DriveCommand extends Command {
    
     Robot.sysController.airSystem.drivePiston(Robot.oi.isShiftGears());
     Robot.sysController.drive.setInputSpeed(linearSpeed, rotationalSpeed);
-
-    if (Robot.oi.isClimbMode()) {
-      Robot.sysController.airSystem.climbPiston(Robot.oi.isClimbMode());
-    }
+    
   }
 
   @Override

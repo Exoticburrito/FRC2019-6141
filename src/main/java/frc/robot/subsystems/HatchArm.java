@@ -22,7 +22,7 @@ public class HatchArm extends Subsystem {
 
     }
 
-    public void setSpeed(double speed) {
+    public void setFingersSpeed(double speed) {
 
         hatchArmMotor.set(speed);
 

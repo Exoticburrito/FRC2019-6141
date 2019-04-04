@@ -11,7 +11,7 @@ import frc.robot.robotMain.Robot;
  * 
  *  Calls the setSpeed method and the pistonIn/Out methods
  *  from the HatchArm subsystem in subsystems package.
- *  Uses secondArm object in SystemController class to access these methods.
+ *  Uses fingers object in SystemController class to access these methods.
  * 
  */
 
@@ -24,7 +24,7 @@ public class AutoHCommand extends Command {
   public AutoHCommand(double direction, double seconds) {
 
     super();
-    requires(Robot.sysController.secondArm);
+    requires(Robot.sysController.fingers);
     requires(Robot.sysController.airSystem);
 
     this.hatchArmSpeed = direction * maxArmSpeed;
@@ -35,7 +35,7 @@ public class AutoHCommand extends Command {
   public AutoHCommand(Boolean pistonInOutBoolean, double pistonTime) {
 
     super();
-    requires(Robot.sysController.secondArm);
+    requires(Robot.sysController.fingers);
     requires(Robot.sysController.airSystem);
     this.time = pistonTime;
 
@@ -53,7 +53,7 @@ public class AutoHCommand extends Command {
   @Override
   protected void execute() {
 
-    Robot.sysController.secondArm.setSpeed(hatchArmSpeed);
+    Robot.sysController.fingers.setFingersSpeed(hatchArmSpeed);
 
     if (inOut) {
 
@@ -78,7 +78,7 @@ public class AutoHCommand extends Command {
   @Override
   protected void end() {
 
-    Robot.sysController.secondArm.stopHArm();
+    Robot.sysController.fingers.stopHArm();
     
   }
 

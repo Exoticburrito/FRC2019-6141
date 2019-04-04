@@ -11,7 +11,7 @@ import frc.robot.robotMain.Robot;
  * 
  *  Calls the setMainArmRotateSpeed method
  *  from the CargoArm subsystem in subsystems package.
- *  Uses mainArm object in SystemController class to access these methods.
+ *  Uses arm object in SystemController class to access these methods.
  * 
  */
 
@@ -30,7 +30,7 @@ public class AutoArmCommand extends Command {
     //NOTE TIME IS NOT TUNED! CAREFUL.
 
     this.direction = upDown;
-    requires(Robot.sysController.mainArm);
+    requires(Robot.sysController.arm);
 
   }
 
@@ -46,11 +46,11 @@ public class AutoArmCommand extends Command {
 
     if (direction) {
 
-      Robot.sysController.mainArm.setMainArmRotateSpeed(maxArmSpeed);
+      Robot.sysController.arm.setArmRotateSpeed(maxArmSpeed);
 
     } else if(!direction) {
 
-      Robot.sysController.mainArm.setMainArmRotateSpeed(minArmSpeed);
+      Robot.sysController.arm.setArmRotateSpeed(minArmSpeed);
 
     }
   
@@ -66,7 +66,7 @@ public class AutoArmCommand extends Command {
   @Override
   protected void end() {
 
-    Robot.sysController.mainArm.stopMainArm();
+    Robot.sysController.arm.stopMainArm();
 
   }
   

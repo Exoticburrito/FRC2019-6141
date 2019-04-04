@@ -10,11 +10,9 @@ public class Pneumatics extends Subsystem {
 
     DoubleSolenoid hatchSolenoid;
     DoubleSolenoid driveSolenoid;
-    DoubleSolenoid climbSolenoid;
 
     private boolean hatch;
     private boolean drive;
-    private boolean climb;
 
   public void initDefaultCommand() {
       
@@ -27,11 +25,9 @@ public class Pneumatics extends Subsystem {
 
     hatchSolenoid = new DoubleSolenoid(0, 1);
     driveSolenoid = new DoubleSolenoid(2, 3);
-    climbSolenoid = new DoubleSolenoid(4, 5);
 
     hatchSolenoid.set(DoubleSolenoid.Value.kReverse);
     driveSolenoid.set(DoubleSolenoid.Value.kReverse);
-    climbSolenoid.set(DoubleSolenoid.Value.kReverse);
         
   }
 
@@ -39,7 +35,6 @@ public class Pneumatics extends Subsystem {
 
     hatchSolenoid.set(DoubleSolenoid.Value.kOff);
     driveSolenoid.set(DoubleSolenoid.Value.kOff);
-    climbSolenoid.set(DoubleSolenoid.Value.kOff);
 
   }
   
@@ -74,28 +69,11 @@ public class Pneumatics extends Subsystem {
     this.drive = driveShift;
     
   } 
-   
-  public void climbPiston (boolean climbBool) {
-
-    if (climb) {
-
-      climbSolenoid.set(DoubleSolenoid.Value.kForward);
-
-    } else {
-
-      climbSolenoid.set(DoubleSolenoid.Value.kReverse);
-
-    }
-
-    this.climb = climbBool;
-
-  }
 
   public void updateSD() {
 
   SmartDashboard.putBoolean("Hatch Piston State", hatch);
   SmartDashboard.putBoolean("Drive Piston State", drive);
-  SmartDashboard.putBoolean("Climb Piston State", climb);
   
   }
 

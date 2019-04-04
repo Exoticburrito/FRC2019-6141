@@ -17,33 +17,30 @@ import frc.robot.sensors.GyroClass;
 public class SystemController extends Subsystem {
 	
 	public DriveTrain drive;
-	public CargoArm mainArm;
-	public HatchArm secondArm;
+	public CargoArm arm;
+	public HatchArm fingers;
 	public Pneumatics airSystem;
 	public GyroClass g1;
 	public Intake intakeWheels;
 
 	// ^^^declare objects
 
-	//Use constructor to create objects of all subsystems.
-
-	public SystemController() {
+	public SystemController() { //Use constructor to create objects of all subsystems.
 
 		drive = new DriveTrain();
-		mainArm = new CargoArm();
-		secondArm = new HatchArm();
+		arm = new CargoArm();
+		fingers = new HatchArm();
 		airSystem = new Pneumatics();
 		g1 = new GyroClass();
 		intakeWheels = new Intake();
 
 	}
 	
-	//update SD for all subsystems.
-	public void updateAllSD() {
+	public void updateAllSD() { //update SD for all subsystems.
 
 		drive.updateSD();
-		mainArm.updateSD();
-		secondArm.updateSD();
+		arm.updateSD();
+		fingers.updateSD();
 		airSystem.updateSD();
 		intakeWheels.updateSD();
 		g1.updateSD();

@@ -22,7 +22,7 @@ public class Intake extends Subsystem {
     public Intake () {
 
         intakeBallMotor = new Spark(RobotMap.CARGO_INTAKE_MOTOR_PWM_PORT);
-        intakeRamp.setMaxCPS(3);
+        intakeRamp.setMaxCPS(0.05);
         intakeMotorSpeed = 0;
 
     }

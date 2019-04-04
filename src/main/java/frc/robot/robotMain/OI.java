@@ -22,13 +22,12 @@ public class OI {
   //NOTE: Toggle Class is custom written to create "toggles" that stay on/off until repressed. 
   //See "Toggle" class in robotMain package.
 
-  private Joystick driver	= new Joystick(RobotMap.JOYSTICK_DRIVER);
+private Joystick driver	= new Joystick(RobotMap.JOYSTICK_DRIVER);
 
   private Toggle  driveReverse = new Toggle(driver, RobotMap.DRIVER_TRIGGER, false);
-  private Toggle  driveSlow = new Toggle(driver, RobotMap.TOGGLE_2, false);
+  private Toggle  drivePrecise = new Toggle(driver, RobotMap.TOGGLE_2, false);
   private Toggle shiftGears = new Toggle(driver, RobotMap.TOGGLE_6, false);
   private Toggle  driveStraight	= new Toggle(driver, RobotMap.TOGGLE_7, false);
-  private Toggle climbPiston = new Toggle(driver, RobotMap.TOGGLE_5, false);
 
   private Button  drCancelButton = new JoystickButton(driver, RobotMap.TOGGLE_12); 
 
@@ -47,13 +46,12 @@ public class OI {
 
 //DRIVER TOGGLE METHODS
 
-  public boolean getTrigger() { return driver.getRawButton(RobotMap.DRIVER_TRIGGER); }
+  public boolean getButton5() { return driver.getRawButton(RobotMap.TOGGLE_5); }
 
-  public boolean isSlowDrive() { return driveSlow.getToggle(); }
-  public boolean isReverseDrive() { return driveReverse.getToggle(); }
-  public boolean isStraightDrive() { return driveStraight.getToggle(); }
-  public boolean isShiftGears() { return shiftGears.getToggle(); }
-  public boolean isClimbMode() { return climbPiston.getToggle(); }
+  public boolean isPreciseDrive() { return drivePrecise.getToggle(); } //PRECISION DRIVE ACTIVATION
+  public boolean isReverseDrive() { return driveReverse.getToggle(); } //SWITCH DRIVE DIRECTION
+  public boolean isStraightDrive() { return driveStraight.getToggle(); } //STRAIGHT DRIVE ACTIVATION
+  public boolean isShiftGears() { return shiftGears.getToggle(); } //SHIFT GEARS; SWITCH GEAR ON DT.
 
 //OPERATOR METHODS, NOTE: Not toggles, therefore no need to create an objects for operator...
 
@@ -81,7 +79,8 @@ public class OI {
 
     SmartDashboard.putBoolean("Straight Drive", isStraightDrive());
     SmartDashboard.putBoolean("Reverse Drive", isReverseDrive());
-    SmartDashboard.putBoolean("Slow Drive", isSlowDrive());
+    SmartDashboard.putBoolean("Precise Drive", isPreciseDrive());
+    SmartDashboard.putBoolean("DriveGear", isShiftGears());
 
     // SmartDashboard.putBoolean("Moderate Drive", isModerateDrive());
     // SmartDashboard.putBoolean("Slow Turn", isSlowDrive());
@@ -99,5 +98,14 @@ public class OI {
     // SmartDashboard.putBoolean("R BUMPER", getRBumper());
 
   }
-  
+
+  public void resetToggles() {
+
+    driveReverse.setToggle(false);
+    drivePrecise.setToggle(false);
+    driveStraight.setToggle(false);
+    shiftGears.setToggle(false);
+
+  }
+
 }

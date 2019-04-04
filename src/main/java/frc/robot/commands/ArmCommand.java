@@ -15,16 +15,16 @@ import frc.robot.robotMain.Robot;
  * 
  */
 
-public class CargoCommand extends Command {
+public class ArmCommand extends Command {
 
   final private double maxArmSpeed = 0.4;
   final private double minArmSpeed = -0.4;
   private double armSpeed;
 
-  public CargoCommand() {
+  public ArmCommand() {
 
     super();
-    requires(Robot.sysController.mainArm);
+    requires(Robot.sysController.arm);
 
   }
 
@@ -39,11 +39,10 @@ public class CargoCommand extends Command {
   protected void execute() {
 
     armSpeed = Robot.oi.getRY();
-
     
     if (Robot.oi.getXButton()) {
 
-      armSpeed = 0.2;
+      armSpeed = 0.1;
 
     } else if (Math.abs(armSpeed) > 0.08) {
 
@@ -55,7 +54,7 @@ public class CargoCommand extends Command {
   
         armSpeed = minArmSpeed;
   
-      }
+      } 
   
       if (Robot.oi.getAButton()) {
   
@@ -68,9 +67,8 @@ public class CargoCommand extends Command {
       armSpeed = 0;
 
     }
-    
 
-    Robot.sysController.mainArm.setMainArmRotateSpeed(-armSpeed);
+    Robot.sysController.arm.setArmRotateSpeed(-armSpeed);
 
   }
 
@@ -84,7 +82,7 @@ public class CargoCommand extends Command {
   @Override
   protected void end() {
 
-    Robot.sysController.mainArm.stopMainArm();
+    Robot.sysController.arm.stopMainArm();
 
   }
   
