@@ -44,7 +44,7 @@ public class Pneumatics extends Subsystem {
 
       hatchSolenoid.set(DoubleSolenoid.Value.kForward);
 
-    } else {
+    } else if (!hatchInOut) {
 
       hatchSolenoid.set(DoubleSolenoid.Value.kReverse);
 
@@ -60,7 +60,7 @@ public class Pneumatics extends Subsystem {
 
       driveSolenoid.set(DoubleSolenoid.Value.kForward);
 
-    } else {
+    } else if (!driveShift) {
 
       driveSolenoid.set(DoubleSolenoid.Value.kReverse);
 

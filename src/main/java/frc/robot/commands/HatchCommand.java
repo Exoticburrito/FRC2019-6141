@@ -44,7 +44,7 @@ public class HatchCommand extends Command {
 
     fingerSpeed = Robot.oi.getLY();
 
-    if (Math.abs(fingerSpeed) > 0.08) {
+    if (Math.abs(fingerSpeed) > 0.2) {
 
       if (fingerSpeed > maxFingerSpeed) {
 
@@ -56,6 +56,10 @@ public class HatchCommand extends Command {
   
       } 
 
+    } else {
+
+      fingerSpeed = 0;
+      
     }
 
     Robot.sysController.fingers.setFingersSpeed(fingerSpeed);

@@ -35,11 +35,11 @@ public class DriveTrain extends Subsystem {
 			
 		leftOne = new VictorSP(RobotMap.LEFT_MOTOR_ONE_PWM_PORT);
 		leftTwo = new VictorSP(RobotMap.LEFT_MOTOR_TWO_PWM_PORT);
-		leftThree = new PWMVictorSPX(RobotMap.LEFT_MOTOR_TWO_PWM_PORT);
+		leftThree = new PWMVictorSPX(RobotMap.LEFT_MOTOR_THREE_PWM_PORT);
 
     	rightOne = new VictorSP(RobotMap.RIGHT_MOTOR_ONE_PWM_PORT);
 		rightTwo = new VictorSP(RobotMap.RIGHT_MOTOR_TWO_PWM_PORT);
-		rightThree = new PWMVictorSPX(RobotMap.LEFT_MOTOR_TWO_PWM_PORT);	
+		rightThree = new PWMVictorSPX(RobotMap.RIGHT_MOTOR_THREE_PWM_PORT);	
 
 		leftRamp.setMaxCPS(0.07);
 		rightRamp.setMaxCPS(0.07);
@@ -79,8 +79,8 @@ public class DriveTrain extends Subsystem {
 			if (rightSpeed > 1.0) rightSpeed = 1.0;
 			if (rightSpeed < -1.0) rightSpeed = -1.0;
 		
-			leftSpeed = leftRamp.rampSpeed(leftSpeed);
-			rightSpeed = rightRamp.rampSpeed(rightSpeed);
+			// leftSpeed = leftRamp.rampSpeed(leftSpeed);
+			// rightSpeed = rightRamp.rampSpeed(rightSpeed);
 
 			setSpeed(leftSpeed, rightSpeed);
 			//then after processing calls setSpeed(). See above...

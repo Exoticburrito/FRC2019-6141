@@ -44,7 +44,7 @@ public class ArmCommand extends Command {
 
       armSpeed = 0.1;
 
-    } else if (Math.abs(armSpeed) > 0.08) {
+    } else if (Math.abs(armSpeed) > 0.2) {
 
       if (armSpeed > maxArmSpeed) {
 
