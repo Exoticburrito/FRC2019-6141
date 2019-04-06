@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.RampInputSpeed;
 import frc.robot.robotMain.Robot;
 
 /**
@@ -23,6 +24,9 @@ public class DriveCommand extends Command {
   private double maxTurn = 0.6;
   private final double STRAIGHT_DRIVE_TURN_RATE= 0.1;
 
+  private RampInputSpeed leftRamp = new RampInputSpeed();
+  private RampInputSpeed rightRamp = new RampInputSpeed();
+  
   public DriveCommand() {
 
     super();
@@ -36,6 +40,10 @@ public class DriveCommand extends Command {
 
     linearSpeed = 0;
     rotationalSpeed = 0;
+
+    
+		leftRamp.setMaxCPS(0.07);
+		rightRamp.setMaxCPS(0.07);
     
   }
   
@@ -79,9 +87,20 @@ public class DriveCommand extends Command {
       }
 
     }
-   
+      
+    double leftSpeed = -linearSpeed + rotationalSpeed;
+    double rightSpeed = linearSpeed - rotationalSpeed;
+
+    if (leftSpeed > 1.0) leftSpeed = 1.0;
+    if (leftSpeed < -1.0) leftSpeed = -1.0;
+    if (rightSpeed > 1.0) rightSpeed = 1.0;
+    if (rightSpeed < -1.0) rightSpeed = -1.0;
+
+    leftSpeed = leftRamp.rampSpeed(leftSpeed);
+    rightSpeed = rightRamp.rampSpeed(rightSpeed);
+      
     Robot.sysController.airSystem.drivePiston(Robot.oi.isShiftGears());
-    Robot.sysController.drive.setInputSpeed(linearSpeed, rotationalSpeed);
+    Robot.sysController.drive.setSpeed(leftSpeed, rightSpeed);
     
   }
 

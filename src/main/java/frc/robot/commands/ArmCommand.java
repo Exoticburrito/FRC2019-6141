@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.RampInputSpeed;
 import frc.robot.robotMain.Robot;
 
 /**
@@ -17,9 +18,11 @@ import frc.robot.robotMain.Robot;
 
 public class ArmCommand extends Command {
 
+  private double armSpeed;
   final private double maxArmSpeed = 0.4;
   final private double minArmSpeed = -0.4;
-  private double armSpeed;
+
+  private RampInputSpeed armRamp = new RampInputSpeed();
 
   public ArmCommand() {
 
@@ -33,6 +36,8 @@ public class ArmCommand extends Command {
 
     armSpeed = 0;
     
+    armRamp.setMaxCPS(0.05);
+
   }
 
   @Override
@@ -44,7 +49,7 @@ public class ArmCommand extends Command {
 
       armSpeed = 0.1;
 
-    } else if (Math.abs(armSpeed) > 0.2) {
+    } else if (Math.abs(armSpeed) > 0.08) {
 
       if (armSpeed > maxArmSpeed) {
 
@@ -54,7 +59,11 @@ public class ArmCommand extends Command {
   
         armSpeed = minArmSpeed;
   
-      } 
+      } else { 
+
+        armSpeed = Robot.oi.getRY();
+
+      }
   
       if (Robot.oi.getAButton()) {
   
@@ -67,7 +76,8 @@ public class ArmCommand extends Command {
       armSpeed = 0;
 
     }
-
+    
+    armSpeed = armRamp.rampSpeed(armSpeed);
     Robot.sysController.arm.setArmRotateSpeed(-armSpeed);
 
   }

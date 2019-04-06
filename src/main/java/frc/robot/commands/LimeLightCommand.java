@@ -30,7 +30,8 @@ public class LimeLightCommand extends Command {
 
       if (LimelightHasValidTarget) {
 
-        Robot.sysController.drive.setInputSpeed(LimelightDriveVal, LimelightSteerVal);
+        
+        Robot.sysController.drive.setSpeed(LimelightDriveVal, LimelightSteerVal);
 
       }
     }

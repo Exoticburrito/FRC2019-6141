@@ -54,7 +54,11 @@ public class HatchCommand extends Command {
   
         fingerSpeed = minFingerSpeed;
   
-      } 
+      } else {
+
+        fingerSpeed = Robot.oi.getRY();
+        
+      }
 
     } else {
 

@@ -17,7 +17,7 @@ import frc.robot.robotMain.Robot;
 
 public class AutoHCommand extends Command {
 
-  final private double maxArmSpeed = 0.4;
+  final private double maxArmSpeed = 0.2;
   private double hatchArmSpeed, time;
   private boolean inOut;
 

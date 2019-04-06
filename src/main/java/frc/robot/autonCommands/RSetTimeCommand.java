@@ -33,9 +33,10 @@ public class RSetTimeCommand extends Command {
 
     protected void execute() {
 
-    	Robot.sysController.drive.setInputSpeed(0, MAX_ROTATE_SPEED * this.direction);
-    	//speed is zero (will not move fwrd) and speed is rotational speed. 
+        Robot.sysController.drive.setSpeed(MAX_ROTATE_SPEED * this.direction * -1, MAX_ROTATE_SPEED * this.direction);
+        
     }
+
     protected boolean isFinished() {
 
         return isTimedOut();

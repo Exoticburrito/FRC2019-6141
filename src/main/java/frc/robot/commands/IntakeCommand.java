@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.RampInputSpeed;
 import frc.robot.robotMain.Robot;
 
 /**
@@ -18,8 +19,10 @@ import frc.robot.robotMain.Robot;
 public class IntakeCommand extends Command {
 
 private double intakeSpeed;
-private double maxOutput;
-private double maxInput;
+private double maxOutput = 0.8;
+private double maxInput = 0.9;
+
+private RampInputSpeed intakeRamp = new RampInputSpeed();
 
   public IntakeCommand() {
 
@@ -31,10 +34,10 @@ private double maxInput;
   @Override
   protected void initialize() {
 
-    maxOutput = 0.8;
-    maxInput = 0.9;
     intakeSpeed = 0;
     
+    intakeRamp.setMaxCPS(0.05);
+
   }
 
   @Override
@@ -72,6 +75,7 @@ private double maxInput;
 
     }
 
+    intakeSpeed = intakeRamp.rampSpeed(intakeSpeed);
     Robot.sysController.intakeWheels.setCargoIntakeSpeed(intakeSpeed);
 
   }

@@ -1,6 +1,7 @@
 package frc.robot.autonCommands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.RampInputSpeed;
 import frc.robot.robotMain.Robot;
 
 /**
@@ -14,6 +15,7 @@ public class DSetTimeCommand extends Command {
 	
 	private double timeLimit;
 	private double speed;
+    private RampInputSpeed rampLinear = new RampInputSpeed();
 
     public DSetTimeCommand(double speed, double time) {
     	
@@ -28,7 +30,10 @@ public class DSetTimeCommand extends Command {
     }
     
     public void execute() {
-    	Robot.sysController.drive.setInputSpeed(speed, 0);
+
+        speed = rampLinear.rampSpeed(speed);
+
+    	Robot.sysController.drive.setSpeed(speed, speed);
     }
 
     @Override
